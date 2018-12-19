@@ -1,7 +1,7 @@
 # PCF Workshop
 An introduction to PCF and its capabilities
 
-## Your first `cf push`
+## 1. Your first `cf push`
 
 Let's start with a simple NodeJS application.
 1. Download the `cf cli` from https://github.com/cloudfoundry/cli#downloads
@@ -11,8 +11,27 @@ Let's start with a simple NodeJS application.
 CF_API_URL=<provided by instructor>
 cf login -a $CF_API_URL
 ```
-4. Select the space that matches your team as provided by instructor
+4. Select the org and space that matches your team as provided by the instructor.
 5. Clone the NodeJS application from the following URL: https://github.com/odedia/cf-sample-app-nodejs
 6. Review the `package.json` file.
 7. Review the `manifest.yml` file.
 8. Push your application to the Pivotal Cloud Foundry by running `cf push`.
+
+
+## 1. Exploring the application from the command line
+
+The apps manager is a great place to view information about your application, but everything can also be done from the command line or through REST api calls.
+1. Run `cf app cf-nodejs` to see an overview about your application
+2. Run `cf scale -i 2 cf-nodejs` to scale your application to two instances.
+3. Run `cf logs --recent cf-nodejs` to view the latest aggregated logs from all instances of your application.
+4. Run `cf logs cf-nodejs` to get a constant stream of the current logs from your application. Refresh the app on a browser and see the results in the logs. Notice how some logs are emitted from the platform, such as [RTR/0].
+5. Run `cf restart cf-nodejs` to perform a simple restart of the node process in each container.
+6. Run `cf restage cf-nodejs` to perform a full container rebuild from the last push.
+6. Run `cf events cf-nodejs` to view the latest events that occured in your application.
+7. Sometimes it makes sense to see exactly what goes on inside a container. Run `cf ssh cf-nodejs` to ssh into one of the running containers of your application. Remember, all containers are stateless and created from the same image, so they are all pretty much the same. Explore the contents of the `app` directory. `exit` the container when done.
+8. The `cf cli` is extensible. View the available extensions by running `cf repo-plugins`.
+9. Install the `top` cf plugin by running `cf install-plugin top`.
+10. Run `cf top` to view a unix-like `top`  of the orgs you can work on.
+11. You can review all available commands by running `cf help`.
+
+## 2. 
