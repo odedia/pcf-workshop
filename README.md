@@ -34,4 +34,11 @@ The apps manager is a great place to view information about your application, bu
 10. Run `cf top` to view a unix-like `top`  of the orgs you can work on.
 11. You can review all available commands by running `cf help`.
 
-## 2. 
+## 2. Pushing a python application
+1. Download the python example from https://github.com/odedia/python-cf-example
+2. Review the manifest.yml
+3. Push your app with `cf push`.
+4. Check the app in Apps Manager. What has changed from the previous deployment?
+
+## 3. .NET Framework and Windows Containers
+1. 
