@@ -41,4 +41,30 @@ The apps manager is a great place to view information about your application, bu
 4. Check the app in Apps Manager. What has changed from the previous deployment?
 
 ## 3. .NET Framework and Windows Containers
-1. 
+1. Clone the .NET Framework application from https://github.com/odedia/pcf-dotnet-environment-viewer.
+2. Inspect the code. This is a standard .NET Framework application.
+3. Under the ViewEnvironment directory, create a manifest.yml with the following data (replace <Your Name>:
+```
+---
+applications:
+- name: dotnet-app
+  host: dotnet-<Your Name>
+  memory: 1024m
+  stack: windows2016
+  buildpack: hwc_buildpack
+```
+4. `cf push` the app.
+5. View the application in your browser. Inspect the app in Apps Manager.
+5. Run `cf ssh dotnet-app`. You are now inside the Windows container. You can see the code under the `app` diretory.
+
+### 4. Service Brokers
+1. Inspect the options in the marketplace from the UI. Each service has a few plans available as defined by the operator.
+2. Run `cf marketplace` from the command line. You should see the same services.
+3. Create a MySQL service from the command line: `cf create-service p.mysql db-small mysql`.
+4. Run `cf service mysql` to monitor the progress of the service creation. The platform now creates a virtual machine at the BOSH layer to host your database.
+5. Bind the application to your dotnet-app: `cf bind-service mysql dotnet-app`.
+6. Restage your application: `cf restage dotnet-app`
+7. Inspect the app in Apps Manager. Under services, you will see the bounded service.
+8. Inspect the running application. You will now see an "Attendees" section in the UI. You can restart the app and the data will remain.
+
+### 5. Zero Downtime Updates
