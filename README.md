@@ -18,7 +18,7 @@ cf login -a $CF_API_URL
 8. Push your application to the Pivotal Cloud Foundry by running `cf push`.
 
 
-## 1. Exploring the application from the command line
+## 2. Exploring the application from the command line
 
 The apps manager is a great place to view information about your application, but everything can also be done from the command line or through REST api calls.
 1. Run `cf app cf-nodejs` to see an overview about your application
@@ -34,13 +34,13 @@ The apps manager is a great place to view information about your application, bu
 10. Run `cf top` to view a unix-like `top`  of the orgs you can work on.
 11. You can review all available commands by running `cf help`.
 
-## 2. Pushing a python application
+## 3. Pushing a python application
 1. Download the python example from https://github.com/odedia/python-cf-example
 2. Review the manifest.yml
 3. Push your app with `cf push`.
 4. Check the app in Apps Manager. What has changed from the previous deployment?
 
-## 3. .NET Framework and Windows Containers
+## 4. .NET Framework and Windows Containers
 1. Clone the .NET Framework application from https://github.com/odedia/pcf-dotnet-environment-viewer.
 2. Inspect the code. This is a standard .NET Framework application.
 3. Under the ViewEnvironment directory, create a manifest.yml with the following data (replace <Your Name>:
@@ -57,7 +57,7 @@ applications:
 5. View the application in your browser. Inspect the app in Apps Manager.
 5. Run `cf ssh dotnet-app`. You are now inside the Windows container. You can see the code under the `app` diretory.
 
-### 4. Service Brokers
+### 5. Service Brokers
 1. Inspect the options in the marketplace from the UI. Each service has a few plans available as defined by the operator.
 2. Run `cf marketplace` from the command line. You should see the same services.
 3. Create a MySQL service from the command line: `cf create-service p.mysql db-small mysql`.
