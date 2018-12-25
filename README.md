@@ -66,5 +66,3 @@ applications:
 6. Restage your application: `cf restage dotnet-app`
 7. Inspect the app in Apps Manager. Under services, you will see the bounded service.
 8. Inspect the running application. You will now see an "Attendees" section in the UI. You can restart the app and the data will remain.
-
-### 5. Zero Downtime Updates
